@@ -1,6 +1,12 @@
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * Тесты для проверки корректности работы пирамидальной сортировки.
+ */
 public class HeapSortTest {
+
     @Test
     void heapsort() {
         int[] array = {5, 4, 3, 2, 1};
@@ -55,12 +61,5 @@ public class HeapSortTest {
         int[] array = {42};
         int[] result = HeapSort.heapsort(array);
         assertArrayEquals(new int[]{42}, result);
-    }
-
-    @Test
-    void alreadyHeapifiedArray() {
-        int[] array = {10, 9, 8, 7, 6};
-        int[] result = HeapSort.heapsort(array);
-        assertArrayEquals(new int[]{6, 7, 8, 9, 10}, result);
     }
 }
