@@ -63,8 +63,4 @@ public class HeapSort {
             i = biggest;
         }
     }
-    public static void main(String[] args) {
-        int[] array = {5, 4, 3, 2, 1};
-        System.out.println(java.util.Arrays.toString(heapsort(array)));
-    }
 }
