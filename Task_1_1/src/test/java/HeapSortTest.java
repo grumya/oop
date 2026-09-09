@@ -35,4 +35,25 @@ public class HeapSortTest {
         int[] result = HeapSort.heapsort(array);
         assertArrayEquals(new int[]{}, result);
     }
+
+    @Test
+    void complexArray() {
+        int[] array = {10, 3, 7, 1, 9, 2, 8, 6, 5, 4};
+        int[] result = HeapSort.heapsort(array);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, result);
+    }
+
+    @Test
+    void twoElements() {
+        int[] array = {2, 1};
+        int[] result = HeapSort.heapsort(array);
+        assertArrayEquals(new int[]{1, 2}, result);
+    }
+
+    @Test
+    void oneElement() {
+        int[] array = {42};
+        int[] result = HeapSort.heapsort(array);
+        assertArrayEquals(new int[]{42}, result);
+    }
 }
