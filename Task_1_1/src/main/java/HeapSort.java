@@ -3,6 +3,8 @@
  */
 public class HeapSort {
 
+    private HeapSort() {
+    }
     /**
      * сортирует массив по возрастанию с помощью пирамиды
      *
