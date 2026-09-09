@@ -19,8 +19,20 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
 tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+
+    classDirectories.setFrom(
+        files(classDirectories.files.map {
+            fileTree(it) {
+                exclude("**/Main.class")
+            }
+        })
+    )
+
     reports {
         xml.required.set(true)
+        html.required.set(true)
     }
 }
