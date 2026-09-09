@@ -56,4 +56,11 @@ public class HeapSortTest {
         int[] result = HeapSort.heapsort(array);
         assertArrayEquals(new int[]{42}, result);
     }
+
+    @Test
+    void alreadyHeapifiedArray() {
+        int[] array = {10, 9, 8, 7, 6};
+        int[] result = HeapSort.heapsort(array);
+        assertArrayEquals(new int[]{6, 7, 8, 9, 10}, result);
+    }
 }

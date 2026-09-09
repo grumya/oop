@@ -26,7 +26,7 @@ tasks.jacocoTestReport {
     classDirectories.setFrom(
         files(classDirectories.files.map {
             fileTree(it) {
-                exclude("Main.class", "**/Main.class")
+                exclude("Main.class", "**/Main*.class")
             }
         })
     )
