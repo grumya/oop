@@ -9,7 +9,7 @@ public class BlackjackView {
      * Выводит приветствие.
      */
     public void showWelcome() {
-        System.out.println("Добро пожаловать в Блэкджек!");
+        System.out.println("Welcome to Blackjack!");
     }
 
     /**
@@ -18,7 +18,7 @@ public class BlackjackView {
      * @param roundNumber номер раунда
      */
     public void showRound(int roundNumber) {
-        System.out.println("Раунд " + roundNumber);
+        System.out.println("Round " + roundNumber);
     }
 
     /**
@@ -28,7 +28,7 @@ public class BlackjackView {
      */
     public void showPlayerCards(Player player) {
         System.out.println(
-                "Ваши карты: "
+                "Your cards: "
                         + player.getHand()
                         + " > "
                         + player.getHand().getValue()
@@ -46,9 +46,9 @@ public class BlackjackView {
         }
 
         System.out.println(
-                "Карты дилера: ["
+                "Dealer's cards: ["
                         + dealer.getHand().getCards().get(0)
-                        + ", <закрытая карта>]"
+                        + ", <hidden card>]"
         );
     }
 
@@ -59,7 +59,7 @@ public class BlackjackView {
      */
     public void showDealerCards(Dealer dealer) {
         System.out.println(
-                "Карты дилера: "
+                "Dealer's cards: "
                         + dealer.getHand()
                         + " > "
                         + dealer.getHand().getValue()
@@ -70,15 +70,15 @@ public class BlackjackView {
      * Выводит сообщение о ходе игрока.
      */
     public void showPlayerTurn() {
-        System.out.println("Ваш ход.");
-        System.out.println("Введите 1, чтобы взять карту, или 0, чтобы остановиться.");
+        System.out.println("Your turn.");
+        System.out.println("Type 1 to hit, or 0 to stand.");
     }
 
     /**
      * Выводит сообщение о ходе дилера.
      */
     public void showDealerTurn() {
-        System.out.println("Ход дилера.");
+        System.out.println("Dealer's turn.");
     }
 
     /**

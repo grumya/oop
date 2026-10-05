@@ -14,7 +14,7 @@ public class Main {
      */
     public static void main(String[] args) {
         BlackjackController controller =
-                new BlackjackController("Игрок");
+                new BlackjackController("Player");
 
         BlackjackView view = new BlackjackView();
         Scanner scanner = new Scanner(System.in);
@@ -24,90 +24,115 @@ public class Main {
         Dealer dealer = controller.getDealer();
 
         view.showWelcome();
-        view.showRound(1);
 
-        // Перемешиваем колоду.
-        deck.shuffle();
+        boolean playAgain = true;
+        int roundNumber = 1;
 
-        // Раздаём две карты игроку и две карты дилеру.
-        player.addCard(deck.draw());
-        dealer.addCard(deck.draw());
-        player.addCard(deck.draw());
-        dealer.addCard(deck.draw());
+        while (playAgain) {
+            view.showRound(roundNumber);
 
-        System.out.println("Дилер раздал карты");
+            // Сбрасываем карты у игрока и дилера перед новым раундом
+            player.getHand().clear();
+            dealer.getHand().clear();
 
-        view.showPlayerCards(player);
-        view.showDealerHiddenCards(dealer);
-
-        // Сначала проверяем блэкджек.
-        if (player.getHand().isBlackjack()) {
-            if (dealer.getHand().isBlackjack()) {
-                view.showDealerCards(dealer);
-                view.showResult("У обоих блэкджек. Ничья!");
-            } else {
-                view.showResult("У вас блэкджек! Вы победили!");
+            // Если в колоде мало карт, обновляем её
+            if (deck.size() < 15) {
+                deck = new Deck();
             }
+            deck.shuffle();
 
-            return;
-        }
-
-        if (dealer.getHand().isBlackjack()) {
-            view.showDealerCards(dealer);
-            view.showResult("У дилера блэкджек. Вы проиграли.");
-            return;
-        }
-
-        // Ход игрока.
-        boolean playerStopped = false;
-
-        while (!playerStopped) {
-            view.showPlayerTurn();
-
-            int choice = scanner.nextInt();
-
-            if (choice == 1) {
-                player.addCard(deck.draw());
-
-                view.showPlayerCards(player);
-
-                if (player.getHand().isBust()) {
-                    view.showResult("Вы набрали больше 21. Вы проиграли.");
-                    return;
-                }
-            } else if (choice == 0) {
-                playerStopped = true;
-            } else {
-                System.out.println("Введите 1 или 0.");
-            }
-        }
-
-        // Ход дилера.
-        view.showDealerTurn();
-
-        view.showDealerCards(dealer);
-
-        while (dealer.shouldDraw()) {
+            // Раздаём две карты игроку и две карты дилеру
+            player.addCard(deck.draw());
             dealer.addCard(deck.draw());
-            view.showDealerCards(dealer);
+            player.addCard(deck.draw());
+            dealer.addCard(deck.draw());
+
+            System.out.println("Dealer dealt the cards");
+
+            view.showPlayerCards(player);
+            view.showDealerHiddenCards(dealer);
+
+            boolean roundFinished = false;
+
+            // Проверяем блэкджек в начале раунда
+            if (player.getHand().isBlackjack()) {
+                if (dealer.getHand().isBlackjack()) {
+                    view.showDealerCards(dealer);
+                    view.showResult("Both have Blackjack. It's a tie!");
+                } else {
+                    view.showResult("You have Blackjack! You win!");
+                }
+                roundFinished = true;
+            } else if (dealer.getHand().isBlackjack()) {
+                view.showDealerCards(dealer);
+                view.showResult("Dealer has Blackjack. You lose.");
+                roundFinished = true;
+            }
+
+            // Ход игрока
+            if (!roundFinished) {
+                boolean playerStopped = false;
+
+                while (!playerStopped) {
+                    view.showPlayerTurn();
+
+                    int choice = scanner.nextInt();
+
+                    if (choice == 1) {
+                        player.addCard(deck.draw());
+                        view.showPlayerCards(player);
+
+                        if (player.getHand().isBust()) {
+                            view.showResult("Bust! You score over 21. You lose.");
+                            roundFinished = true;
+                            playerStopped = true;
+                        }
+                    } else if (choice == 0) {
+                        playerStopped = true;
+                    } else {
+                        System.out.println("Please enter 1 or 0.");
+                    }
+                }
+            }
+
+            // Ход дилера (если раунд ещё не завершён)
+            if (!roundFinished) {
+                view.showDealerTurn();
+                view.showDealerCards(dealer);
+
+                while (dealer.shouldDraw()) {
+                    dealer.addCard(deck.draw());
+                    view.showDealerCards(dealer);
+                }
+
+                // Проверяем результат
+                if (dealer.getHand().isBust()) {
+                    view.showResult("Dealer busts! You win!");
+                } else {
+                    int playerValue = player.getHand().getValue();
+                    int dealerValue = dealer.getHand().getValue();
+
+                    if (playerValue > dealerValue) {
+                        view.showResult("You win!");
+                    } else if (playerValue < dealerValue) {
+                        view.showResult("Dealer wins!");
+                    } else {
+                        view.showResult("It's a tie!");
+                    }
+                }
+            }
+
+            // Спрашиваем, хочет ли игрок продолжить
+            System.out.println("Play another round? (1 - Yes, 0 - No):");
+            int againChoice = scanner.nextInt();
+
+            if (againChoice == 1) {
+                roundNumber++;
+            } else {
+                playAgain = false;
+            }
         }
 
-        // Проверяем перебор дилера.
-        if (dealer.getHand().isBust()) {
-            view.showResult("Дилер набрал больше 21. Вы победили!");
-            return;
-        }
-
-        // Сравниваем значения рук.
-        int playerValue = player.getHand().getValue();
-        int dealerValue = dealer.getHand().getValue();
-
-        if (playerValue > dealerValue) {
-            view.showResult("Вы победили!");
-        } else if (playerValue < dealerValue) {
-            view.showResult("Дилер победил.");
-        } else {
-            view.showResult("Ничья!");
-        }
+        System.out.println("Thank you for playing!");
     }
 }

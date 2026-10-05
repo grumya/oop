@@ -4,10 +4,10 @@ package ru.nsu.msafonova1.blackjack;
  * Представляет четыре масти стандартной колоды.
  */
 public enum Suit {
-    HEARTS("Червы"),
-    DIAMONDS("Бубны"),
-    CLUBS("Трефы"),
-    SPADES("Пики");
+    HEARTS("Hearts"),
+    DIAMONDS("Diamonds"),
+    CLUBS("Clubs"),
+    SPADES("Spades");
 
     private final String name;
 

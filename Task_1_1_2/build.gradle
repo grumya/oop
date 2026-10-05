@@ -23,10 +23,14 @@ application {
 
 run {
     standardInput = System.in
+    jvmArgs '-Dfile.encoding=UTF-8'
 }
 
 test {
     useJUnitPlatform()
+
+    jvmArgs '-Dfile.encoding=UTF-8', '-Duser.language=en'
+    systemProperty 'java.awt.headless', 'true'
 }
 
 jacoco {
@@ -48,4 +52,5 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.withType(JavaExec).configureEach {
     systemProperty 'file.encoding', 'UTF-8'
+    jvmArgs '-Dfile.encoding=UTF-8'
 }

@@ -88,6 +88,12 @@ public class Hand {
         return getValue() > 21;
     }
 
+    /**
+     * Очищает руку от карт для нового раунда.
+     */
+    public void clear() {
+        cards.clear();
+    }
     @Override
     public String toString() {
         return cards.toString();

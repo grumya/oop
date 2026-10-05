@@ -38,7 +38,7 @@ public class Deck {
      */
     public Card draw() {
         if (cards.isEmpty()) {
-            throw new IllegalStateException("Колода пуста");
+            throw new IllegalStateException("Deck is empty");
         }
 
         return cards.remove(cards.size() - 1);
