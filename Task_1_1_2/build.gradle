@@ -38,11 +38,17 @@ jacoco {
 }
 
 jacocoTestReport {
-    dependsOn test
-
     reports {
         xml.required = true
         html.required = true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    'ru/nsu/msafonova1/blackjack/Main.class',
+                    'ru/nsu/msafonova1/blackjack/BlackjackView.class'
+            ])
+        }))
     }
 }
 
