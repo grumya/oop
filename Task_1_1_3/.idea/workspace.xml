@@ -4,46 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b74950f5-bf81-48de-8627-38c73afe6474" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/expanded/expanded.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/expanded/expanded.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/Add.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/Div.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/Expression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/ExpressionParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/expression/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/Mul.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/Number.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/Sub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/expression/Variable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/expression/ExpressionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/expression/ExpressionTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacoco/test.exec" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacoco/test.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results-generic.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results-generic.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/expression/operation/Add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Div.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/expression/operation/Div.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/expression/core/Expression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ExpressionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/expression/parser/ExpressionParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Mul.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/expression/operation/Mul.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/expression/core/Number.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/expression/operation/Sub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/expression/core/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ExpressionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ExpressionTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="b74950f5-bf81-48de-8627-38c73afe6474" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
