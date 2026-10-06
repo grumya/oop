@@ -1,11 +1,18 @@
 package ru.nsu.msafonova1.blackjack;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Тесты для класса BlackjackController.
+ */
 class BlackjackControllerTest {
 
+    /**
+     * Проверяет инициализацию контроллера, игрока, дилера и колоды.
+     */
     @Test
     void shouldCreateGameWithPlayerDealerAndDeck() {
         BlackjackController controller =
@@ -16,6 +23,9 @@ class BlackjackControllerTest {
         assertNotNull(controller.getDeck());
     }
 
+    /**
+     * Проверяет правильность установки имени игрока.
+     */
     @Test
     void shouldCreatePlayerWithCorrectName() {
         BlackjackController controller =
@@ -24,6 +34,9 @@ class BlackjackControllerTest {
         assertEquals("Alice", controller.getPlayer().getName());
     }
 
+    /**
+     * Проверяет, что при старте создаётся полная колода из 52 карт.
+     */
     @Test
     void shouldCreateFullDeck() {
         BlackjackController controller =

@@ -1,11 +1,18 @@
 package ru.nsu.msafonova1.blackjack;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Тесты для класса Player.
+ */
 class PlayerTest {
 
+    /**
+     * Проверяет правильность сохранения имени игрока.
+     */
     @Test
     void shouldCreatePlayerWithCorrectName() {
         Player player = new Player("Alice");
@@ -13,6 +20,9 @@ class PlayerTest {
         assertEquals("Alice", player.getName());
     }
 
+    /**
+     * Проверяет инициализацию игрока с пустой рукой.
+     */
     @Test
     void shouldCreatePlayerWithEmptyHand() {
         Player player = new Player("Alice");
@@ -21,6 +31,9 @@ class PlayerTest {
         assertEquals(0, player.getHand().size());
     }
 
+    /**
+     * Проверяет добавление карты в руку игрока.
+     */
     @Test
     void shouldAddCardToHand() {
         Player player = new Player("Alice");

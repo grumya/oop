@@ -94,6 +94,7 @@ public class Hand {
     public void clear() {
         cards.clear();
     }
+
     @Override
     public String toString() {
         return cards.toString();

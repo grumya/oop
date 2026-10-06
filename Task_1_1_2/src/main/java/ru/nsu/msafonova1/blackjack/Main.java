@@ -134,5 +134,6 @@ public class Main {
         }
 
         System.out.println("Thank you for playing!");
+        scanner.close();
     }
 }
