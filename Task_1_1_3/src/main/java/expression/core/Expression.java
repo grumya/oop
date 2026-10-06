@@ -1,4 +1,4 @@
-package expression;
+package expression.core;
 
 import java.util.ArrayList;
 import java.util.Arrays;

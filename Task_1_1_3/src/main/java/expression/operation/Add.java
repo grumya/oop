@@ -1,4 +1,6 @@
-package expression;
+package expression.operation;
+
+import expression.core.Expression;
 
 import java.util.Map;
 

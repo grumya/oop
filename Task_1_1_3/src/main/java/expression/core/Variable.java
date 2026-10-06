@@ -1,4 +1,4 @@
-package expression;
+package expression.core;
 
 import java.util.Map;
 import java.util.Objects;
