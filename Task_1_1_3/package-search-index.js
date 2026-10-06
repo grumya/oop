@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"expression"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"expression"},{"l":"expression.core"},{"l":"expression.operation"},{"l":"expression.parser"}];updateSearchResults();

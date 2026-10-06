@@ -5,21 +5,21 @@
 <title>ExpressionParser (Task_1_1_3 1.0-SNAPSHOT API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="declaration: package: expression, class: ExpressionParser">
+<meta name="description" content="declaration: package: expression.parser, class: ExpressionParser">
 <meta name="generator" content="javadoc/ClassWriterImpl">
-<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../script-dir/jquery-ui.min.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../jquery-ui.overrides.css" title="Style">
-<script type="text/javascript" src="../script.js"></script>
-<script type="text/javascript" src="../script-dir/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../script-dir/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../jquery-ui.overrides.css" title="Style">
+<script type="text/javascript" src="../../script.js"></script>
+<script type="text/javascript" src="../../script-dir/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
 var oddRowColor = "odd-row-color";
 var tableTab = "table-tab";
 var activeTableTab = "active-table-tab";
-var pathtoroot = "../";
+var pathtoroot = "../../";
 loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -31,11 +31,12 @@ loadScripts(document, 'script');</script>
 <div class="top-nav" id="navbar-top">
 <div class="skip-nav"><a href="#skip-navbar-top" title="Skip navigation links">Skip navigation links</a></div>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
+<li><a href="../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="nav-bar-cell1-rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
-<li><a href="../index-all.html">Index</a></li>
-<li><a href="../help-doc.html#class">Help</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+<li><a href="../../help-doc.html#class">Help</a></li>
 </ul>
 </div>
 <div class="sub-nav">
@@ -66,17 +67,17 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">expression</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">expression.parser</a></div>
 <h1 title="Class ExpressionParser" class="title">Class ExpressionParser</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">expression.ExpressionParser</div>
+<div class="inheritance">expression.parser.ExpressionParser</div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ExpressionParser</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Класс для парсинга текстовой строки в объектное дерево Expression.</div>
+<div class="block">Парсер математических выражений из текстовой строки.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -104,10 +105,10 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Expression.html" title="class in expression">Expression</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../core/Expression.html" title="class in expression.core">Expression</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#parse(java.lang.String)" class="member-name-link">parse</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Преобразует строку в объект Expression.</div>
+<div class="block">Парсит строку и создает объектное дерево Expression.</div>
 </div>
 </div>
 </div>
@@ -143,8 +144,8 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="parse(java.lang.String)">
 <h3>parse</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Expression.html" title="class in expression">Expression</a></span>&nbsp;<span class="element-name">parse</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input)</span></div>
-<div class="block">Преобразует строку в объект Expression.</div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../core/Expression.html" title="class in expression.core">Expression</a></span>&nbsp;<span class="element-name">parse</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input)</span></div>
+<div class="block">Парсит строку и создает объектное дерево Expression.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>input</code> - входная строка выражения</dd>
