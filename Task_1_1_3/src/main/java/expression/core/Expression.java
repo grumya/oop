@@ -60,11 +60,11 @@ public abstract class Expression {
         List<String> pairs = new ArrayList<>(Arrays.asList(assignments.split(";")));
 
         for (String pair : pairs) {
-            // Разбиваем пару "переменная = значение" по символу '='
-            List<String> kv = new ArrayList<>(Arrays.asList(pair.split("=")));
-            if (kv.size() == 2) {
-                String varName = kv.get(0).trim();
-                int value = Integer.parseInt(kv.get(1).trim());
+            // Список из двух элементов: имя переменной (ключ) и её значение (keyValuePair)
+            List<String> keyValuePair = new ArrayList<>(Arrays.asList(pair.split("=")));
+            if (keyValuePair.size() == 2) {
+                String varName = keyValuePair.get(0).trim();
+                int value = Integer.parseInt(keyValuePair.get(1).trim());
                 env.put(varName, value);
             }
         }

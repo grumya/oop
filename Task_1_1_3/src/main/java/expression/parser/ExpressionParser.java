@@ -13,12 +13,17 @@ import expression.operation.Sub;
  */
 public class ExpressionParser {
 
-    private static final char OPEN_BRACKET = '(';
-    private static final char CLOSE_BRACKET = ')';
-    private static final char ADD_OP = '+';
-    private static final char SUB_OP = '-';
-    private static final char MUL_OP = '*';
-    private static final char DIV_OP = '/';
+    /**
+     * Логическое объединение символов синтаксиса и операций парсера в единую сущность.
+     */
+    private static final class SyntaxToken {
+        static final char OPEN_BRACKET = '(';
+        static final char CLOSE_BRACKET = ')';
+        static final char ADD = '+';
+        static final char SUB = '-';
+        static final char MUL = '*';
+        static final char DIV = '/';
+    }
 
     /**
      * Парсит строку и создает объектное дерево Expression.
@@ -42,13 +47,13 @@ public class ExpressionParser {
         String unbracketed = stripOuterBrackets(str);
 
         // 1. Поиск аддитивных операций (+, -)
-        int opIndex = findMainOperatorIndex(unbracketed, ADD_OP, SUB_OP);
+        int opIndex = findMainOperatorIndex(unbracketed, SyntaxToken.ADD, SyntaxToken.SUB);
         if (opIndex != -1) {
             return buildBinaryExpression(unbracketed, opIndex);
         }
 
         // 2. Поиск мультипликативных операций (*, /)
-        opIndex = findMainOperatorIndex(unbracketed, MUL_OP, DIV_OP);
+        opIndex = findMainOperatorIndex(unbracketed, SyntaxToken.MUL, SyntaxToken.DIV);
         if (opIndex != -1) {
             return buildBinaryExpression(unbracketed, opIndex);
         }
@@ -58,8 +63,8 @@ public class ExpressionParser {
 
     private static String stripOuterBrackets(String str) {
         String current = str;
-        while (current.startsWith(String.valueOf(OPEN_BRACKET))
-                && current.endsWith(String.valueOf(CLOSE_BRACKET))) {
+        while (current.startsWith(String.valueOf(SyntaxToken.OPEN_BRACKET))
+                && current.endsWith(String.valueOf(SyntaxToken.CLOSE_BRACKET))) {
 
             if (!hasEnclosingOuterBrackets(current)) {
                 break;
@@ -73,8 +78,8 @@ public class ExpressionParser {
         int balance = 0;
         for (int i = 0; i < str.length() - 1; i++) {
             char ch = str.charAt(i);
-            if (ch == OPEN_BRACKET) balance++;
-            if (ch == CLOSE_BRACKET) balance--;
+            if (ch == SyntaxToken.OPEN_BRACKET) balance++;
+            if (ch == SyntaxToken.CLOSE_BRACKET) balance--;
             if (balance == 0) {
                 return false;
             }
@@ -86,8 +91,8 @@ public class ExpressionParser {
         int balance = 0;
         for (int i = str.length() - 1; i >= 0; i--) {
             char ch = str.charAt(i);
-            if (ch == CLOSE_BRACKET) balance++;
-            else if (ch == OPEN_BRACKET) balance--;
+            if (ch == SyntaxToken.CLOSE_BRACKET) balance++;
+            else if (ch == SyntaxToken.OPEN_BRACKET) balance--;
             else if (balance == 0 && (ch == targetOp1 || ch == targetOp2)) {
                 return i;
             }
@@ -101,13 +106,13 @@ public class ExpressionParser {
         Expression right = parseExpression(str.substring(opIndex + 1));
 
         switch (op) {
-            case ADD_OP:
+            case SyntaxToken.ADD:
                 return new Add(left, right);
-            case SUB_OP:
+            case SyntaxToken.SUB:
                 return new Sub(left, right);
-            case MUL_OP:
+            case SyntaxToken.MUL:
                 return new Mul(left, right);
-            case DIV_OP:
+            case SyntaxToken.DIV:
                 return new Div(left, right);
             default:
                 throw new IllegalArgumentException("Unknown operator: " + op);
