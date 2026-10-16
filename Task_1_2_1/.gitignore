@@ -1,0 +1,31 @@
+# Сборочные артефакты и кэш
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Настройки среды разработки (IntelliJ IDEA)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Системные файлы
+.DS_Store
+.kotlin
+
+# Остальное IDE / редакторы
+.vscode/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
