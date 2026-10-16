@@ -94,7 +94,7 @@ public class GraphAdjacencyMatrix<T> extends AbstractGraph<T> {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof GraphAdjacencyMatrix)){
+        if (!(o instanceof GraphAdjacencyMatrix)) {
             return false;
         }
         GraphAdjacencyMatrix<?> that = (GraphAdjacencyMatrix<?>) o;

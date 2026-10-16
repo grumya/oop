@@ -72,7 +72,7 @@ public class GraphAdjacencyList<T> extends AbstractGraph<T> {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof GraphAdjacencyList)){
+        if (!(o instanceof GraphAdjacencyList)) {
             return false;
         }
         GraphAdjacencyList<?> that = (GraphAdjacencyList<?>) o;

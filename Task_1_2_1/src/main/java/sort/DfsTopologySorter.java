@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Реализация топологической сортировки на основе поиска в глубину (DFS).
  */
 public class DfsTopologySorter implements TopologySort {
-
     @Override
     public <T> List<T> sort(Graph<T> graph) throws GraphCycleException {
         Map<T, DfsColors> colors = new HashMap<>();

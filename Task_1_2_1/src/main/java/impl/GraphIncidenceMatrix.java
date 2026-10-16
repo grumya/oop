@@ -32,7 +32,7 @@ public class GraphIncidenceMatrix<T> extends AbstractGraph<T> {
 
     @Override
     public void removeVertex(T vertex) {
-        if (vertex == null){
+        if (vertex == null) {
             return;
         }
         int index = vertices.indexOf(vertex);
