@@ -14,7 +14,7 @@ public interface Graph<T> {
     /**
      * Добавляет новую вершину в граф.
      *
-     * @ вершина для добавления
+     * @param vertex вершина для добавления
      */
     void addVertex(T vertex);
 

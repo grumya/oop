@@ -1,8 +1,10 @@
 package sort;
 
 import graph.Graph;
-import java.util.*;
-
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 /**
  * Реализация топологической сортировки на основе поиска в глубину (DFS).
  */

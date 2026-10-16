@@ -1,6 +1,11 @@
 package impl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Реализация графа на основе матрицы смежности (Adjacency Matrix).
@@ -27,7 +32,9 @@ public class GraphAdjacencyMatrix<T> extends AbstractGraph<T> {
 
     @Override
     public void removeVertex(T vertex) {
-        if (vertex == null) return;
+        if (vertex == null) {
+            return;
+        }
         int index = vertices.indexOf(vertex);
         if (index != -1) {
             vertices.remove(index);
@@ -51,7 +58,9 @@ public class GraphAdjacencyMatrix<T> extends AbstractGraph<T> {
 
     @Override
     public void removeEdge(T source, T destination) {
-        if (source == null || destination == null) return;
+        if (source == null || destination == null) {
+            return;
+        }
         int srcIdx = vertices.indexOf(source);
         int destIdx = vertices.indexOf(destination);
         if (srcIdx != -1 && destIdx != -1) {
@@ -82,8 +91,12 @@ public class GraphAdjacencyMatrix<T> extends AbstractGraph<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof GraphAdjacencyMatrix)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof GraphAdjacencyMatrix)){
+            return false;
+        }
         GraphAdjacencyMatrix<?> that = (GraphAdjacencyMatrix<?>) o;
         return Objects.equals(vertices, that.vertices) && Objects.equals(matrix, that.matrix);
     }

@@ -43,8 +43,12 @@ public class Edge<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Edge)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Edge)) {
+            return false;
+        }
         Edge<?> edge = (Edge<?>) o;
         return Objects.equals(source, edge.source) && Objects.equals(destination, edge.destination);
     }

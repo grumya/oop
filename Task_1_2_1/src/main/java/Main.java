@@ -2,16 +2,21 @@ import graph.Graph;
 import impl.GraphAdjacencyList;
 import io.GraphReader;
 import io.TextGraphReader;
-import sort.DfsTopologySorter;
-import sort.TopologySort;
-
 import java.io.StringReader;
 import java.util.List;
+import sort.DfsTopologySorter;
+import sort.TopologySort;
 
 /**
  * Главный класс приложения для демонстрации и проверки работоспособности.
  */
 public class Main {
+
+    /**
+     * Точка входа в приложение.
+     *
+     * @param args аргументы командной строки
+     */
     public static void main(String[] args) {
         try {
             Graph<String> graph = new GraphAdjacencyList<>();

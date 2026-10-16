@@ -1,6 +1,12 @@
 package impl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Реализация графа на основе списка смежности (Adjacency List).
@@ -19,7 +25,9 @@ public class GraphAdjacencyList<T> extends AbstractGraph<T> {
 
     @Override
     public void removeVertex(T vertex) {
-        if (vertex == null) return;
+        if (vertex == null) {
+            return;
+        }
         adjacencyMap.remove(vertex);
         for (List<T> neighbors : adjacencyMap.values()) {
             neighbors.remove(vertex);
@@ -40,7 +48,9 @@ public class GraphAdjacencyList<T> extends AbstractGraph<T> {
 
     @Override
     public void removeEdge(T source, T destination) {
-        if (source == null || destination == null) return;
+        if (source == null || destination == null) {
+            return;
+        }
         if (adjacencyMap.containsKey(source)) {
             adjacencyMap.get(source).remove(destination);
         }
@@ -59,8 +69,12 @@ public class GraphAdjacencyList<T> extends AbstractGraph<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof GraphAdjacencyList)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof GraphAdjacencyList)){
+            return false;
+        }
         GraphAdjacencyList<?> that = (GraphAdjacencyList<?>) o;
         return Objects.equals(adjacencyMap, that.adjacencyMap);
     }

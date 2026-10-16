@@ -16,7 +16,7 @@ public abstract class AbstractGraph<T> implements Graph<T> {
     /**
      * Проверяет, что переданная вершина не равна null.
      *
-     * @ вершина для проверки
+     * @param vertex вершина для проверки
      * @throws IllegalArgumentException если вершина равна null
      */
     protected void validateVertex(T vertex) {

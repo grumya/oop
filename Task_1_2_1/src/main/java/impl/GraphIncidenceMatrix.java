@@ -1,7 +1,13 @@
 package impl;
 
 import graph.Edge;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Реализация графа на основе матрицы инцидентности (Incidence Matrix).
@@ -26,7 +32,9 @@ public class GraphIncidenceMatrix<T> extends AbstractGraph<T> {
 
     @Override
     public void removeVertex(T vertex) {
-        if (vertex == null) return;
+        if (vertex == null){
+            return;
+        }
         int index = vertices.indexOf(vertex);
         if (index != -1) {
             vertices.remove(index);
@@ -54,7 +62,9 @@ public class GraphIncidenceMatrix<T> extends AbstractGraph<T> {
         addVertex(source);
         addVertex(destination);
         Edge<T> newEdge = new Edge<>(source, destination);
-        if (edges.contains(newEdge)) return;
+        if (edges.contains(newEdge)) {
+            return;
+        }
 
         edges.add(newEdge);
         int destIdx = vertices.indexOf(destination);
@@ -73,7 +83,9 @@ public class GraphIncidenceMatrix<T> extends AbstractGraph<T> {
 
     @Override
     public void removeEdge(T source, T destination) {
-        if (source == null || destination == null) return;
+        if (source == null || destination == null) {
+            return;
+        }
         Edge<T> targetEdge = new Edge<>(source, destination);
         int edgeIdx = edges.indexOf(targetEdge);
         if (edgeIdx != -1) {
@@ -88,10 +100,10 @@ public class GraphIncidenceMatrix<T> extends AbstractGraph<T> {
     public List<T> getNeighbors(T vertex) {
         validateVertex(vertex);
         List<T> neighbors = new ArrayList<>();
-        int vIdx = vertices.indexOf(vertex);
-        if (vIdx != -1) {
+        int vertexIndex = vertices.indexOf(vertex);
+        if (vertexIndex != -1) {
             for (int e = 0; e < edges.size(); e++) {
-                if (matrix.get(vIdx).get(e) == 1) {
+                if (matrix.get(vertexIndex).get(e) == 1) {
                     neighbors.add(edges.get(e).getDestination());
                 }
             }
@@ -106,8 +118,12 @@ public class GraphIncidenceMatrix<T> extends AbstractGraph<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof GraphIncidenceMatrix)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof GraphIncidenceMatrix)) {
+            return false;
+        }
         GraphIncidenceMatrix<?> that = (GraphIncidenceMatrix<?>) o;
         return Objects.equals(vertices, that.vertices) && Objects.equals(edges, that.edges);
     }
