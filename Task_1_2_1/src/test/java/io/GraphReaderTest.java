@@ -1,13 +1,12 @@
-package io_test;
-
-import graph.Graph;
-import impl.GraphAdjacencyList;
-import io.GraphReader;
-import org.junit.jupiter.api.Test;
+package io;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
+
+import graph.Graph;
+import impl.GraphAdjacencyList;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
