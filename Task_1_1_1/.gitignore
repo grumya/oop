@@ -1,0 +1,25 @@
+# --- Gradle & Build outputs ---
+.gradle/
+build/
+bin/
+out/
+
+# Игнорируем отчеты Checkstyle / JaCoCo / HTML
+build/reports/
+build/test-results/
+
+# Временные файлы
+*.log
+*.tmp
+*.class
+
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# --- VS Code & OS ---
+.vscode/
+.DS_Store
+Thumbs.db
