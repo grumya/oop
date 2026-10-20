@@ -18,7 +18,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty 'file.encoding', 'UTF-8'
     finalizedBy jacocoTestReport
+}
+
+tasks.withType(Test) {
+    systemProperty 'file.encoding', 'UTF-8'
 }
 
 jacocoTestReport {

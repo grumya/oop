@@ -1,13 +1,16 @@
-package io;
+package io_test;
 
 import graph.Graph;
 import impl.GraphAdjacencyList;
+import io.GraphReader;
+import io.TextGraphReader;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TextGraphReaderTest {
 
@@ -19,7 +22,7 @@ class TextGraphReaderTest {
         String data = "TaskA TaskB\nTaskB TaskC";
         reader.read(graph, new StringReader(data));
 
-        assertTrue(graph.hasVertex("TaskA") || graph.getVertices().contains("TaskA"));
+        assertTrue(graph.getVertices().contains("TaskA"));
         assertTrue(graph.getNeighbors("TaskA").contains("TaskB"));
         assertTrue(graph.getNeighbors("TaskB").contains("TaskC"));
     }
