@@ -4,6 +4,7 @@ import graph.Graph;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 /**
  * Реализация GraphReader для чтения пар вершин из текстового потока.
@@ -20,15 +21,27 @@ public class TextGraphReader implements GraphReader {
                 if (line.isEmpty()) {
                     continue;
                 }
-                String[] parts = line.split("\\s+");
-                if (parts.length >= 2) {
-                    @SuppressWarnings("unchecked")
-                    T source = (T) parts[0];
-                    @SuppressWarnings("unchecked")
-                    T destination = (T) parts[1];
+                List<String> parts = List.of(line.split("\\s+"));
+                if (parts.size() >= 2) {
+                    T source = parseVertex(parts.get(0));
+                    T destination = parseVertex(parts.get(1));
                     graph.addEdge(source, destination);
                 }
             }
+        }
+    }
+
+    /**
+     * Безопасное приведение строки к типу T (поддерживает Integer и String).
+     */
+    @SuppressWarnings("unchecked")
+    private <T> T parseVertex(String token) {
+        try {
+            // Если вершина — число, возвращаем как Integer
+            return (T) Integer.valueOf(token);
+        } catch (NumberFormatException e) {
+            // Иначе возвращаем как текст (String)
+            return (T) token;
         }
     }
 }

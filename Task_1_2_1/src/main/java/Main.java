@@ -2,7 +2,8 @@ import graph.Graph;
 import impl.GraphAdjacencyList;
 import io.GraphReader;
 import io.TextGraphReader;
-import java.io.StringReader;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.List;
 import sort.DfsTopologySorter;
 import sort.TopologySort;
@@ -22,9 +23,10 @@ public class Main {
             Graph<String> graph = new GraphAdjacencyList<>();
             GraphReader reader = new TextGraphReader();
 
-            // Имитация чтения из файла графа
-            String data = "TaskA TaskB\nTaskB TaskC\nTaskA TaskC";
-            reader.read(graph, new StringReader(data));
+            // Чтение графа из файла input.txt (в корне проекта)
+            try (BufferedReader fileReader = new BufferedReader(new FileReader("input.txt"))) {
+                reader.read(graph, fileReader);
+            }
 
             System.out.println("Graph loaded successfully: " + graph);
 
