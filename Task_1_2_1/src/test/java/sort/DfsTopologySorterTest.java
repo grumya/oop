@@ -1,19 +1,21 @@
 package sort;
 
+import java.util.List;
+
 import graph.Graph;
 import impl.GraphAdjacencyList;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DfsTopologySorterTest {
 
     @Test
     void testSuccessfulTopologySort() {
         Graph<String> graph = new GraphAdjacencyList<>();
-        // Строим ацикличный граф: A -> B -> C, а также A -> D
         graph.addEdge("A", "B");
         graph.addEdge("B", "C");
         graph.addEdge("A", "D");
@@ -24,7 +26,6 @@ class DfsTopologySorterTest {
         assertNotNull(sorted);
         assertEquals(4, sorted.size());
 
-        // Проверяем корректность топологического порядка (источники раньше стоков)
         int indexA = sorted.indexOf("A");
         int indexB = sorted.indexOf("B");
         int indexC = sorted.indexOf("C");
@@ -38,7 +39,6 @@ class DfsTopologySorterTest {
     @Test
     void testCycleDetectionThrowsException() {
         Graph<String> graph = new GraphAdjacencyList<>();
-        // Создаем цикл: A -> B -> C -> A
         graph.addEdge("A", "B");
         graph.addEdge("B", "C");
         graph.addEdge("C", "A");
@@ -55,7 +55,6 @@ class DfsTopologySorterTest {
 
     @Test
     void testDfsColorsEnumValues() {
-        // Проверяем наличие всех констант в DfsColors для полного покрытия
         DfsColors[] colors = DfsColors.values();
         assertEquals(3, colors.length);
         assertEquals(DfsColors.WHITE, DfsColors.valueOf("WHITE"));

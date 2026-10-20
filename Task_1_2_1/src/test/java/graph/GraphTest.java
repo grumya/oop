@@ -1,13 +1,16 @@
 package graph;
 
+import java.util.List;
+import java.util.Set;
+
 import impl.GraphAdjacencyList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GraphTest {
 
@@ -15,12 +18,11 @@ class GraphTest {
 
     @BeforeEach
     void setUp() {
-        // Проверяем контракт интерфейса на базе GraphAdjacencyList
         graph = new GraphAdjacencyList<>();
     }
 
     @Test
-    void testAddAndGetVertices() {
+    void testAddVertexAndGetVertices() {
         graph.addVertex("A");
         graph.addVertex("B");
 
@@ -31,7 +33,7 @@ class GraphTest {
     }
 
     @Test
-    void testAddAndGetNeighbors() {
+    void testAddEdgeAndGetNeighbors() {
         graph.addEdge("A", "B");
         graph.addEdge("A", "C");
 
@@ -60,15 +62,12 @@ class GraphTest {
         graph.addEdge("A", "B");
         graph.addEdge("B", "C");
 
-        // Удаляем промежуточную вершину
         graph.removeVertex("B");
 
         Set<String> vertices = graph.getVertices();
         assertFalse(vertices.contains("B"));
         assertTrue(vertices.contains("A"));
         assertTrue(vertices.contains("C"));
-
-        // Убеждаемся, что инцидентные ребра тоже удалились
         assertTrue(graph.getNeighbors("A").isEmpty());
     }
 }
