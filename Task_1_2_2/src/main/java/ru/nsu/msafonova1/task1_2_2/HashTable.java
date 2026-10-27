@@ -83,7 +83,8 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         if (key == null) {
             return 0;
         }
-        return Math.abs(key.hashCode()) % capacity;
+        int hash = key.hashCode();
+        return (hash & 0x7fffffff) % capacity;
     }
 
     /**
