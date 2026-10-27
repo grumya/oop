@@ -191,10 +191,6 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
      * @return true, если ключ содержится в таблице
      */
     public boolean containsKey(K key) {
-        return get(key) != null || hasKeyInTable(key);
-    }
-
-    private boolean hasKeyInTable(K key) {
         int index = getIndex(key, table.length);
         int hash = key == null ? 0 : key.hashCode();
         Entry<K, V> current = table[index];
@@ -211,20 +207,24 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     private void ensureCapacity() {
         if ((float) size / table.length >= loadFactor) {
             int newCapacity = table.length * 2;
-            Entry<K, V>[] newTable = new Entry[newCapacity];
+            Entry<K, V>[] oldTable = table;
+            table = new Entry[newCapacity];
+            size = 0;
 
-            for (Entry<K, V> head : table) {
+            for (Entry<K, V> head : oldTable) {
                 Entry<K, V> current = head;
                 while (current != null) {
-                    Entry<K, V> next = current.next;
-                    int newIndex = getIndex(current.key, newCapacity);
-                    current.next = newTable[newIndex];
-                    newTable[newIndex] = current;
-                    current = next;
+                    putInternal(current.hash, current.key, current.value);
+                    current = current.next;
                 }
             }
-            table = newTable;
         }
+    }
+
+    private void putInternal(int hash, K key, V value) {
+        int index = getIndex(key, table.length);
+        table[index] = new Entry<>(hash, key, value, table[index]);
+        size++;
     }
 
     /**
