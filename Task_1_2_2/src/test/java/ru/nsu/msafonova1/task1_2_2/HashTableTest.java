@@ -25,7 +25,7 @@ class HashTableTest {
         table.put("key1", "val1");
         table.put("key2", "val2");
         assertEquals("val1", table.get("key1"));
-        assertEquals("val2", table.get("val2"));
+        assertEquals("val2", table.get("key2"));
         assertTrue(table.containsKey("key1"));
     }
 
