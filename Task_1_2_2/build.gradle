@@ -17,9 +17,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    finalizedBy jacocoTestReport
+    forkEvery = 0
+    maxParallelForks = 1
 }
-
 jacocoTestReport {
     dependsOn test
     reports {
