@@ -87,6 +87,19 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         return (hash & 0x7fffffff) % capacity;
     }
 
+    private Entry<K, V> findEntry(K key) {
+        int index = getIndex(key, table.length);
+        int hash = key == null ? 0 : key.hashCode();
+        Entry<K, V> current = table[index];
+        while (current != null) {
+            if (current.hash == hash && Objects.equals(current.key, key)) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
     /**
      * Добавление пары ключ-значение (k, v).
      *
@@ -149,17 +162,8 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
      * @return значение или null, если ключ не найден
      */
     public V get(K key) {
-        int index = getIndex(key, table.length);
-        int hash = key == null ? 0 : key.hashCode();
-
-        Entry<K, V> current = table[index];
-        while (current != null) {
-            if (current.hash == hash && Objects.equals(current.key, key)) {
-                return current.value;
-            }
-            current = current.next;
-        }
-        return null;
+        Entry<K, V> entry = findEntry(key);
+        return entry == null ? null : entry.value;
     }
 
     /**
@@ -169,17 +173,11 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
      * @param value новое значение
      */
     public void update(K key, V value) {
-        int index = getIndex(key, table.length);
-        int hash = key == null ? 0 : key.hashCode();
-
-        Entry<K, V> current = table[index];
-        while (current != null) {
-            if (current.hash == hash && Objects.equals(current.key, key)) {
-                current.value = value;
-                modCount++;
-                return;
-            }
-            current = current.next;
+        Entry<K, V> existing = findEntry(key);
+        if (existing != null) {
+            existing.value = value;
+            modCount++;
+            return;
         }
         put(key, value);
     }
@@ -191,16 +189,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
      * @return true, если ключ содержится в таблице
      */
     public boolean containsKey(K key) {
-        int index = getIndex(key, table.length);
-        int hash = key == null ? 0 : key.hashCode();
-        Entry<K, V> current = table[index];
-        while (current != null) {
-            if (current.hash == hash && Objects.equals(current.key, key)) {
-                return true;
-            }
-            current = current.next;
-        }
-        return false;
+        return findEntry(key) != null;
     }
 
     @SuppressWarnings("unchecked")
