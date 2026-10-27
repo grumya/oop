@@ -253,6 +253,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         };
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -261,7 +262,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         if (!(o instanceof HashTable)) {
             return false;
         }
-        HashTable<?, ?> other = (HashTable<?, ?>) o;
+        HashTable other = (HashTable) o;
         if (this.size != other.size) {
             return false;
         }
