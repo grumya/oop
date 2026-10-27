@@ -307,6 +307,17 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int h = 0;
+        for (Entry<K, V> entry : this) {
+            if (entry != null) {
+                h += entry.hashCode();
+            }
+        }
+        return h;
+    }
+
     /**
      * Вывод в строку.
      */
