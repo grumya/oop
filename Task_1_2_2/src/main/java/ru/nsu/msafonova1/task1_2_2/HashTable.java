@@ -1,10 +1,10 @@
 package ru.nsu.msafonova1.task1_2_2;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.ConcurrentModificationException;
-import java.util.StringJoiner;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 /**
  * Параметризованная хеш-таблица с разрешением коллизий методом цепочек.
@@ -52,8 +52,12 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Entry)) return false;
+            if (this == o) {
+                return true;
+            }
+            if (!(o instanceof Entry)) {
+                return false;
+            }
             Entry<?, ?> entry = (Entry<?, ?>) o;
             return Objects.equals(key, entry.key) && Objects.equals(value, entry.value);
         }
@@ -65,7 +69,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     }
 
     /**
-     * 1. Создание пустой хеш-таблицы.
+     * Создание пустой хеш-таблицы.
      */
     @SuppressWarnings("unchecked")
     public HashTable() {
@@ -76,14 +80,16 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     }
 
     private int getIndex(K key, int capacity) {
-        if (key == null) return 0;
+        if (key == null) {
+            return 0;
+        }
         return Math.abs(key.hashCode()) % capacity;
     }
 
     /**
-     * 2. Добавление пары ключ-значение (k, v).
+     * Добавление пары ключ-значение (k, v).
      *
-     * @ ключ
+     * @param key   ключ
      * @param value значение
      */
     public void put(K key, V value) {
@@ -106,7 +112,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     }
 
     /**
-     * 3. Удаление пары ключ-значение по ключу.
+     * Удаление пары ключ-значение по ключу.
      *
      * @param key ключ
      * @return true, если пара была найдена и удалена
@@ -136,7 +142,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     }
 
     /**
-     * 4. Поиск значения по ключу.
+     * Поиск значения по ключу.
      *
      * @param key ключ
      * @return значение или null, если ключ не найден
@@ -156,7 +162,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     }
 
     /**
-     * 5. Обновление значения по ключу.
+     * Обновление значения по ключу.
      *
      * @param key   ключ
      * @param value новое значение
@@ -178,7 +184,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     }
 
     /**
-     * 6. Проверка наличия значения по ключу.
+     * Проверка наличия значения по ключу.
      *
      * @param key ключ
      * @return true, если ключ содержится в таблице
@@ -221,7 +227,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     }
 
     /**
-     * 7. Итерирование по элементам коллекции с обработкой ConcurrentModificationException.
+     * Итерирование по элементам коллекции с обработкой ConcurrentModificationException.
      */
     @Override
     public Iterator<Entry<K, V>> iterator() {
@@ -251,7 +257,9 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
             @Override
             public Entry<K, V> next() {
                 if (modCount != expectedModCount) {
-                    throw new ConcurrentModificationException("Table was modified during iteration");
+                    throw new ConcurrentModificationException(
+                            "Table was modified during iteration"
+                    );
                 }
                 if (!hasNext()) {
                     throw new NoSuchElementException();
@@ -269,31 +277,38 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     }
 
     /**
-     * 8. Сравнение на равенство с другой хеш-таблицей.
+     * Сравнение на равенство с другой хеш-таблицей.
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof HashTable)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HashTable)) {
+            return false;
+        }
         HashTable<?, ?> other = (HashTable<?, ?>) o;
-        if (this.size != other.size) return false;
+        if (this.size != other.size) {
+            return false;
+        }
 
         return equalsHelper(other);
     }
 
-    private <KC, VC> boolean equalsHelper(HashTable<KC, VC> other) {
+    private <K2, V2> boolean equalsHelper(HashTable<K2, V2> other) {
         for (Entry<K, V> entry : this) {
-            if (!other.containsKey((KC) entry.key)) {
+            if (!other.containsKey((K2) entry.key)) {
                 return false;
             }
-            if (!Objects.equals(entry.value, other.get((KC) entry.key))) {
+            if (!Objects.equals(entry.value, other.get((K2) entry.key))) {
                 return false;
             }
         }
         return true;
     }
+
     /**
-     * 9. Вывод в строку.
+     * Вывод в строку.
      */
     @Override
     public String toString() {
