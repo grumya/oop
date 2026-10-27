@@ -235,17 +235,14 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         return new Iterator<>() {
             private final int expectedModCount = modCount;
             private int currentIndex = 0;
-            private Entry<K, V> currentEntry = null;
-            private Entry<K, V> nextEntry = findNextNonEmpty(0);
+            private Entry<K, V> nextEntry = findFirstNonEmpty();
 
-            private Entry<K, V> findNextNonEmpty(int startIdx) {
-                int idx = startIdx;
-                while (idx < table.length) {
-                    if (table[idx] != null) {
-                        currentIndex = idx;
-                        return table[idx];
+            private Entry<K, V> findFirstNonEmpty() {
+                while (currentIndex < table.length) {
+                    if (table[currentIndex] != null) {
+                        return table[currentIndex];
                     }
-                    idx++;
+                    currentIndex++;
                 }
                 return null;
             }
@@ -266,13 +263,14 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
                     throw new NoSuchElementException();
                 }
 
-                currentEntry = nextEntry;
-                if (currentEntry.next != null) {
-                    nextEntry = currentEntry.next;
+                Entry<K, V> result = nextEntry;
+                if (result.next != null) {
+                    nextEntry = result.next;
                 } else {
-                    nextEntry = findNextNonEmpty(currentIndex + 1);
+                    currentIndex++;
+                    nextEntry = findFirstNonEmpty();
                 }
-                return currentEntry;
+                return result;
             }
         };
     }
