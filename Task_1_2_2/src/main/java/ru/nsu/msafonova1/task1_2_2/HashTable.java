@@ -310,9 +310,11 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
     @Override
     public int hashCode() {
         int h = 0;
-        for (Entry<K, V> entry : this) {
-            if (entry != null) {
-                h += entry.hashCode();
+        for (Entry<K, V> head : table) {
+            Entry<K, V> current = head;
+            while (current != null) {
+                h += current.hashCode();
+                current = current.next;
             }
         }
         return h;
