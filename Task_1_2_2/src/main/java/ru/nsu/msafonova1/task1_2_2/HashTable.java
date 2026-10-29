@@ -50,14 +50,14 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         }
 
         @Override
-        public boolean equals(Object o) {
-            if (this == o) {
+        public boolean equals(Object entryObject) {
+            if (this == entryObject) {
                 return true;
             }
-            if (!(o instanceof Entry)) {
+            if (!(entryObject instanceof Entry)) {
                 return false;
             }
-            Entry<?, ?> entry = (Entry<?, ?>) o;
+            Entry<?, ?> entry = (Entry<?, ?>) entryObject;
             return Objects.equals(key, entry.key) && Objects.equals(value, entry.value);
         }
 
@@ -82,7 +82,8 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         if (key == null) {
             return 0;
         }
-        return Math.abs(key.hashCode()) % capacity;
+        int hash = key.hashCode();
+        return (hash & 0x7fffffff) % capacity;
     }
 
     /**
@@ -120,21 +121,21 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         int hash = (key == null) ? 0 : key.hashCode();
         int index = getIndex(key, table.length);
 
-        Entry<K, V> prev = null;
+        Entry<K, V> previous = null;
         Entry<K, V> current = table[index];
 
         while (current != null) {
             if (current.hash == hash && Objects.equals(current.key, key)) {
-                if (prev == null) {
+                if (previous == null) {
                     table[index] = current.next;
                 } else {
-                    prev.next = current.next;
+                    previous.next = current.next;
                 }
                 size--;
                 modCount++;
                 return true;
             }
-            prev = current;
+            previous = current;
             current = current.next;
         }
         return false;
@@ -255,20 +256,20 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
 
     @SuppressWarnings("rawtypes")
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
             return true;
         }
-        if (!(o instanceof HashTable)) {
+        if (!(otherObject instanceof HashTable)) {
             return false;
         }
-        HashTable other = (HashTable) o;
-        if (this.size != other.size) {
+        HashTable otherTable = (HashTable) otherObject;
+        if (this.size != otherTable.size) {
             return false;
         }
         for (Entry<K, V> entry : this) {
-            Object otherVal = other.get(entry.key);
-            if (!Objects.equals(entry.value, otherVal)) {
+            Object otherValue = otherTable.get(entry.key);
+            if (!Objects.equals(entry.value, otherValue)) {
                 return false;
             }
         }
@@ -277,24 +278,24 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
 
     @Override
     public int hashCode() {
-        int h = 0;
+        int hashSum = 0;
         for (Entry<K, V> head : table) {
             Entry<K, V> current = head;
             while (current != null) {
-                h += current.hashCode();
+                hashSum += current.hashCode();
                 current = current.next;
             }
         }
-        return h;
+        return hashSum;
     }
 
     @Override
     public String toString() {
-        StringJoiner sj = new StringJoiner(", ", "{", "}");
+        StringJoiner stringJoiner = new StringJoiner(", ", "{", "}");
         for (Entry<K, V> entry : this) {
-            sj.add(entry.key + "=" + entry.value);
+            stringJoiner.add(entry.key + "=" + entry.value);
         }
-        return sj.toString();
+        return stringJoiner.toString();
     }
 
     public int size() {
