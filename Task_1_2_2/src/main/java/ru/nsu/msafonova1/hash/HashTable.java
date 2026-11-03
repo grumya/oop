@@ -1,4 +1,4 @@
-package ru.nsu.msafonova1.task1_2_2;
+package ru.nsu.msafonova1.hash;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -34,6 +34,14 @@ public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
         V value;
         Entry<K, V> next;
 
+        /**
+         * Конструктор узла хеш-таблицы.
+         *
+         * @param hash  хеш-код ключа
+         * @param key   ключ
+         * @param value значение
+         * @param next  ссылка на следующий узел в цепочке
+         */
         public Entry(int hash, K key, V value, Entry<K, V> next) {
             this.hash = hash;
             this.key = key;

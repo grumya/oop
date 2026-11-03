@@ -1,4 +1,4 @@
-package ru.nsu.msafonova1.task1_2_2;
+package ru.nsu.msafonova1.hash;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
