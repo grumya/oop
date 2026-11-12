@@ -1,4 +1,4 @@
-package ru.nsu.msafonova1.task1_3_1;
+package ru.nsu.msafonova1.task131;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;

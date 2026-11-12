@@ -3,7 +3,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'ru.nsu.msafonova1.task1_3_1'
+group = 'ru.nsu.msafonova1.task131'
 version = '1.0-SNAPSHOT'
 
 repositories {
