@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.msafonova1.task131","c":"SubstringFinder","l":"findSubstrings(Path, String)","u":"findSubstrings(java.nio.file.Path,java.lang.String)"},{"p":"ru.nsu.msafonova1.task131","c":"SubstringFinder","l":"SubstringFinder()","u":"%3Cinit%3E()"}];updateSearchResults();

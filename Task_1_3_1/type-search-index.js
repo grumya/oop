@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.msafonova1.task131","l":"SubstringFinder"}];updateSearchResults();
