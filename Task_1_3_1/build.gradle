@@ -26,9 +26,6 @@ test {
     useJUnitPlatform()
     systemProperty 'file.encoding', 'UTF-8'
 
-    // Отключаем выполнение тестов через командную строку,
-    // чтобы избежать багов GradleWorkerMain на Windows
-    enabled = false
 
     finalizedBy jacocoTestReport
 }
