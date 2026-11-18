@@ -38,7 +38,8 @@ public class SubstringFinder {
         CharBuffer characterBuffer = CharBuffer.allocate(bufferSize);
 
         try (BufferedReader reader = Files.newBufferedReader(
-                filePath, StandardCharsets.UTF_8)) {
+                filePath, StandardCharsets.UTF_8
+        )) {
             long globalCharacterOffset = 0;
             int overlapLength = substringLength - 1;
             int charactersReadCount;
@@ -72,7 +73,8 @@ public class SubstringFinder {
                     occurrenceIndices.add(absoluteCharacterIndex);
 
                     matchIndex = currentTextumentBlock.indexOf(
-                            targetSubstring, matchIndex + 1);
+                            targetSubstring, matchIndex + 1
+                    );
                 }
 
                 globalCharacterOffset += charactersReadCount;
