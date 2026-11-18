@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class SubstringFinder {
 
+    private static final int MIN_BUFFER_SIZE = 8192;
+
     /**
      * Находит индексы начала каждого вхождения заданной подстроки в файле.
      *
@@ -31,7 +33,7 @@ public class SubstringFinder {
         }
 
         int substringLength = targetSubstring.length();
-        int bufferSize = Math.max(8192, substringLength * 2);
+        int bufferSize = Math.max(MIN_BUFFER_SIZE, substringLength * 2);
         char[] characterBuffer = new char[bufferSize];
 
         try (BufferedReader reader = Files.newBufferedReader(
@@ -44,8 +46,10 @@ public class SubstringFinder {
             int currentOverlapLength = 0;
 
             while ((charactersReadCount = reader.read(
-                    characterBuffer, currentOverlapLength,
-                    bufferSize - currentOverlapLength)) != -1) {
+                    characterBuffer,
+                    currentOverlapLength,
+                    bufferSize - currentOverlapLength
+            )) != -1) {
                 if (charactersReadCount == 0 && currentOverlapLength == 0) {
                     break;
                 }
@@ -71,18 +75,29 @@ public class SubstringFinder {
                     System.arraycopy(
                             characterBuffer,
                             totalValidCharactersCount - overlapLength,
-                            overlapBuffer, 0, overlapLength);
+                            overlapBuffer,
+                            0,
+                            overlapLength
+                    );
                     currentOverlapLength = overlapLength;
                 } else {
                     System.arraycopy(
-                            characterBuffer, 0, overlapBuffer, 0,
-                            totalValidCharactersCount);
+                            characterBuffer,
+                            0,
+                            overlapBuffer,
+                            0,
+                            totalValidCharactersCount
+                    );
                     currentOverlapLength = totalValidCharactersCount;
                 }
 
                 System.arraycopy(
-                        overlapBuffer, 0, characterBuffer, 0,
-                        currentOverlapLength);
+                        overlapBuffer,
+                        0,
+                        characterBuffer,
+                        0,
+                        currentOverlapLength
+                );
             }
         }
 
